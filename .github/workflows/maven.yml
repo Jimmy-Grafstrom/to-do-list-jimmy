@@ -43,4 +43,6 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/to-do-list:latest
+        tags: |
+          ${{ secrets.DOCKERHUB_USERNAME }}/to-do-list:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/to-do-list:${{ github.sha }}
