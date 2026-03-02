@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+    <nav th:fragment="navbar">
+        <div class="nav-container">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/workout}">Workouts</a>
+            <a th:href="@{/groceries}">Groceries</a>
+            <a th:href="@{/studyplan}">Study Plans</a>
+            <a th:href="@{/homeChore}">Home Chores</a>
+        </div>
+    </nav>
+</body>
+</html>

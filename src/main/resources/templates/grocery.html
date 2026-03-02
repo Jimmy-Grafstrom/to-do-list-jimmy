@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Grocery</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>Information</h1>
 
-<h1>Information</h1>
+    <p><strong>Name:</strong> <span th:text="${grocery.name}"></span></p>
+    <p><strong>Quantity:</strong> <span th:text="${grocery.quantity}"></span></p>
+    <p><strong>Category:</strong> <span th:text="${grocery.category}"></span></p>
+    <p><strong>Status:</strong>
+        <span th:text="${grocery.purchased ? 'Purchased' : 'Not purchased'}"></span>
+    </p>
 
-<p>Name: <span th:text="${grocery.name}"></span></p>
-<p>Quantity: <span th:text="${grocery.quantity}"></span></p>
-<p>Category: <span th:text="${grocery.category}"></span></p>
-<p>Status:
-    <span th:text="${grocery.purchased ? 'Purchased' : 'Not purchased'}"></span>
-</p>
-
-<a th:href="@{/groceries}">Back</a>
-
+    <div class="action-links">
+        <a th:href="@{/groceries}" class="btn">Back</a>
+    </div>
+</div>
 </body>
 </html>

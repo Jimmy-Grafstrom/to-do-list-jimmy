@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Home chore</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
     <h1>Chore details</h1>
-<p>Chore: <span th:text="${homeChore.chore}"></span></p>
-<p>Room: <span th:text="${homeChore.room}"></span></p>
-<p>Importance: <span th:text="${homeChore.important ? 'Important' : 'Not important'}"></span></p>
-<p>Estimated time: <span th:text="${homeChore.estimatedTime}"></span> minutes</p>
+    <p><strong>Chore:</strong> <span th:text="${homeChore.chore}"></span></p>
+    <p><strong>Room:</strong> <span th:text="${homeChore.room}"></span></p>
+    <p><strong>Importance:</strong> <span th:text="${homeChore.important ? 'Important' : 'Not important'}"></span></p>
+    <p><strong>Estimated time:</strong> <span th:text="${homeChore.estimatedTime}"></span> minutes</p>
 
-<a th:href="@{/homeChore}">Back to list of all chores</a>
+    <br>
+    <div class="action-links">
+        <a th:href="@{/homeChore}" class="btn">Back to list of all chores</a>
+    </div>
+</div>
 </body>
 </html>

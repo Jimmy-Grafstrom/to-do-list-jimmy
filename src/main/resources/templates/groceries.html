@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Grocery list</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>Groceries</h1>
 
-<h1>Groceries</h1>
+    <a th:href="@{/groceries/new}" class="btn">Add grocery</a>
 
-<a th:href="@{/groceries/new}">Add grocery</a>
-
-<ul>
-    <li th:each="grocery : ${groceries}">
-        <span th:text="${grocery.name}"></span>
-
-        <a th:href="@{/groceries/{id}(id=${grocery.id})}">Show info</a>
-
-        <a th:href="@{/groceries/{id}/edit(id=${grocery.id})}">Update</a>
-
-        <form th:action="@{/groceries/{id}(id=${grocery.id})}" method="post" style="display: inline">
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-
-
-</ul>
+    <ul>
+        <li th:each="grocery : ${groceries}">
+            <span th:text="${grocery.name}"></span>
+            <div class="action-links" style="margin-top: 10px;">
+                <a th:href="@{/groceries/{id}(id=${grocery.id})}" class="btn">Show info</a>
+                <a th:href="@{/groceries/{id}/edit(id=${grocery.id})}" class="btn">Update</a>
+                <form th:action="@{/groceries/{id}(id=${grocery.id})}" method="post" style="display: inline">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </li>
+    </ul>
 
     <br>
-    <a th:href="@{/}">Back to Homepage</a>
+    <a th:href="@{/}" class="back-link">Back to Homepage</a>
+</div>
 </body>
 </html>

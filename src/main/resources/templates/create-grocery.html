@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Add groceries</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>New grocery</h1>
 
-<h1>New grocery</h1>
+    <form method="post" th:action="@{/groceries}">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name">
+        </div>
 
-<form method="post" th:action="@{/groceries}">
-    <p>
-        <label>Name:</label>
-        <input type="text" name="name">
-    </p>
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" name="quantity">
+        </div>
 
-    <p>
-        <label>Quantity:</label>
-        <input type="number" name="quantity">
-    </p>
+        <div class="form-group">
+            <label>Category:</label>
+            <input type="text" name="category">
+        </div>
 
-    <p>
-        <label>Category:</label>
-        <input type="text" name="category">
-    </p>
+        <input type="hidden" name="purchased" value="false">
 
-    <input type="hidden" name="purchased" value="false">
-
-    <button type="submit">Save</button>
-</form>
-
+        <button type="submit" class="btn">Save</button>
+    </form>
+    <br>
+    <a th:href="@{/groceries}" class="back-link">Back</a>
+</div>
 </body>
 </html>

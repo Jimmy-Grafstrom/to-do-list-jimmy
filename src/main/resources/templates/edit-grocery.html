@@ -3,43 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Update grocery</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>Update grocery</h1>
 
-<h1>Update grocery</h1>
+    <form method="post" th:object="${grocery}" th:action="@{/groceries/{id}(id=${grocery.id})}">
+        <input type="hidden" name="_method" value="PUT">
 
-<form method="post" th:object="${grocery}" th:action="@{/groceries/{id}(id=${grocery.id})}">
-    <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" name="name" th:value="${grocery.name}">
+        </div>
 
+        <div class="form-group">
+            <label>Quantity:</label>
+            <input type="number" name="quantity" th:value="${grocery.quantity}">
+        </div>
 
-    <p>
-        <label>Name:</label>
-        <input type="text" name="name"
-               th:value="${grocery.name}">
-    </p>
+        <div class="form-group">
+            <label>Category:</label>
+            <input type="text" name="category" th:value="${grocery.category}">
+        </div>
 
-    <p>
-        <label>Quantity:</label>
-        <input type="number" name="quantity"
-               th:value="${grocery.quantity}">
-    </p>
+        <div class="form-group">
+            <label>Purchased:
+                <input type="checkbox" th:field="*{purchased}" style="width: auto; margin-left: 10px;">
+            </label>
+        </div>
 
-    <p>
-        <label>Category:</label>
-        <input type="text" name="category"
-               th:value="${grocery.category}">
-    </p>
-
-    <p>
-        <label>Purchased:</label>
-
-        <input type="checkbox"
-               th:field="*{purchased}">
-    </p>
-
-    <button type="submit">Update</button>
-
-</form>
-
+        <button type="submit" class="btn">Update</button>
+    </form>
+    <br>
+    <a th:href="@{/groceries}" class="back-link">Cancel</a>
+</div>
 </body>
 </html>
