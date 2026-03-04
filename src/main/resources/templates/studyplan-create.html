@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Studyplan</title>
+    <title>Create Study Plan</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Create New Studyplan</h1>
+    <h1>Create New Study Plan</h1>
     <form th:action="@{/studyplan}" th:object="${studyplan}" method="post">
         <div class="form-group">
             <label for="task">Task:</label>
@@ -30,10 +30,9 @@
             <label for="deadline">Deadline:</label>
             <input type="date" id="deadline" th:field="*{deadline}" required />
         </div>
-        <button type="submit" class="btn">Create</button>
+        <button type="submit" class="btn">Save Plan</button>
+        <a th:href="@{/studyplan}" class="btn" style="background-color: #95a5a6; margin-left: 10px;">Cancel</a>
     </form>
-    <br>
-    <a th:href="@{/studyplan}" class="back-link">Cancel</a>
 </div>
 </body>
 </html>

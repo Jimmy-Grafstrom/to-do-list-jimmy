@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Grocery</title>
+    <title>Grocery Item Details</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Information</h1>
+    <h1>Grocery Item Details</h1>
 
     <p><strong>Name:</strong> <span th:text="${grocery.name}"></span></p>
     <p><strong>Quantity:</strong> <span th:text="${grocery.quantity}"></span></p>
@@ -17,8 +17,14 @@
         <span th:text="${grocery.purchased ? 'Purchased' : 'Not purchased'}"></span>
     </p>
 
+    <br>
     <div class="action-links">
-        <a th:href="@{/groceries}" class="btn">Back</a>
+        <a th:href="@{/groceries}" class="btn">Back to List</a>
+        <a th:href="@{/groceries/{id}/edit(id=${grocery.id})}" class="btn">Edit</a>
+        <form th:action="@{/groceries/{id}(id=${grocery.id})}" method="post" style="display: inline">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+        </form>
     </div>
 </div>
 </body>

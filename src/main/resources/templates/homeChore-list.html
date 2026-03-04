@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>List of all Home Chores</title>
+    <title>Home Chores</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Chores</h1>
-    <a th:href="@{/homeChore/new}" class="btn">Create new Chore</a>
+    <h1>Home Chores</h1>
+    <a th:href="@{/homeChore/new}" class="btn" style="margin-bottom: 20px;">Add New Chore</a>
 
     <table>
         <thead>
             <tr>
                 <th>Chore</th>
                 <th>Room</th>
-                <th>Importance</th>
-                <th>Estimated time</th>
+                <th>Important</th>
+                <th>Estimated Time (min)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -25,27 +25,24 @@
             <tr th:each="chore : ${homeChores}">
                 <td th:text="${chore.chore}"></td>
                 <td th:text="${chore.room}"></td>
-                <td th:text="${chore.important}"></td>
+                <td th:text="${chore.important ? 'Yes' : 'No'}"></td>
                 <td th:text="${chore.estimatedTime}"></td>
                 <td class="action-links">
-                    <a th:href="@{/homeChore/{id}(id=${chore.id})}" class="btn">
-                        Show details
-                    </a>
-                    <a th:href="@{/homeChore/{id}/edit(id=${chore.id})}" class="btn">
-                        Edit chore
-                    </a>
+                    <a th:href="@{/homeChore/{id}(id=${chore.id})}" class="btn">Info</a>
+                    <a th:href="@{/homeChore/{id}/edit(id=${chore.id})}" class="btn">Update</a>
 
                     <form th:action="@{/homeChore/{id}(id=${chore.id})}"
                           method="post"
                           style="display: inline">
                         <input type="hidden" name="_method" value="DELETE"/>
-                        <button type="submit" class="btn btn-danger">Delete chore</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this chore?')">Delete</button>
                     </form>
                 </td>
             </tr>
         </tbody>
     </table>
-    <a th:href="@{/}" class="back-link">Back to homepage</a>
+    <br>
+    <a th:href="@{/}" class="back-link">Back to Homepage</a>
 </div>
 </body>
 </html>

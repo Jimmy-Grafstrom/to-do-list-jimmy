@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update grocery</title>
+    <title>Update Grocery Item</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Update grocery</h1>
+    <h1>Update Grocery Item</h1>
 
     <form method="post" th:object="${grocery}" th:action="@{/groceries/{id}(id=${grocery.id})}">
         <input type="hidden" name="_method" value="PUT">
 
         <div class="form-group">
-            <label>Name:</label>
-            <input type="text" name="name" th:value="${grocery.name}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
         </div>
 
         <div class="form-group">
-            <label>Quantity:</label>
-            <input type="number" name="quantity" th:value="${grocery.quantity}">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" th:field="*{quantity}" min="1">
         </div>
 
         <div class="form-group">
-            <label>Category:</label>
-            <input type="text" name="category" th:value="${grocery.category}">
+            <label for="category">Category:</label>
+            <input type="text" id="category" th:field="*{category}">
         </div>
 
         <div class="form-group">
-            <label>Purchased:
-                <input type="checkbox" th:field="*{purchased}" style="width: auto; margin-left: 10px;">
+            <label>
+                <input type="checkbox" th:field="*{purchased}"> Purchased
             </label>
         </div>
 
-        <button type="submit" class="btn">Update</button>
+        <button type="submit" class="btn">Update Item</button>
+        <a th:href="@{/groceries}" class="btn" style="background-color: #95a5a6; margin-left: 10px;">Cancel</a>
     </form>
-    <br>
-    <a th:href="@{/groceries}" class="back-link">Cancel</a>
 </div>
 </body>
 </html>

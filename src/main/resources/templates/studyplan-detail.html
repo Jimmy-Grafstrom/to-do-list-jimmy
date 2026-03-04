@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Studyplan Detail</title>
+    <title>Study Plan Details</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Studyplan Detail</h1>
+    <h1>Study Plan Details</h1>
 
     <p><strong>Task:</strong> <span th:text="${studyplan.task}"></span></p>
     <p><strong>Priority:</strong> <span th:text="${studyplan.priority}"></span></p>
-    <p><strong>Course Name:</strong> <span th:text="${studyplan.coursename}"></span></p>
+    <p><strong>Course:</strong> <span th:text="${studyplan.coursename}"></span></p>
     <p><strong>Start Date:</strong> <span th:text="${studyplan.startdate}"></span></p>
     <p><strong>Deadline:</strong> <span th:text="${studyplan.deadline}"></span></p>
 
@@ -22,10 +22,9 @@
         <a th:href="@{/studyplan/{id}/edit(id=${studyplan.id})}" class="btn">Edit</a>
 
         <form th:action="@{/studyplan/{id}/delete(id=${studyplan.id})}" method="post"
-              onsubmit="return confirm('Are you sure you want to delete this Studyplan?');"
               style="display:inline;">
             <input type="hidden" name="_method" value="delete"/>
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this study plan?')">Delete</button>
         </form>
     </div>
 </div>

@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Studyplan</title>
+    <title>Update Study Plan</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 <nav th:replace="~{fragments/header :: navbar}"></nav>
 <div class="container">
-    <h1>Update Studyplan</h1>
+    <h1>Update Study Plan</h1>
 
     <form th:action="@{/studyplan/{id}(id=${studyplan.id})}" th:object="${studyplan}" method="post">
         <input type="hidden" name="_method" value="put"/>
@@ -34,11 +34,9 @@
             <input type="date" id="deadline" th:field="*{deadline}" required />
         </div>
 
-        <button type="submit" class="btn">Update</button>
+        <button type="submit" class="btn">Update Plan</button>
+        <a th:href="@{/studyplan}" class="btn" style="background-color: #95a5a6; margin-left: 10px;">Cancel</a>
     </form>
-
-    <br>
-    <a th:href="@{/studyplan}" class="back-link">Back to List</a>
 </div>
 </body>
 </html>
