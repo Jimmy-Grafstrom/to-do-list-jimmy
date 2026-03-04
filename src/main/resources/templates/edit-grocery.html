@@ -1,45 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update grocery</title>
+    <title>Update Grocery Item</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>Update Grocery Item</h1>
 
-<h1>Update grocery</h1>
+    <form method="post" th:object="${grocery}" th:action="@{/groceries/{id}(id=${grocery.id})}">
+        <input type="hidden" name="_method" value="PUT">
 
-<form method="post" th:object="${grocery}" th:action="@{/groceries/{id}(id=${grocery.id})}">
-    <input type="hidden" name="_method" value="PUT">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required>
+        </div>
 
+        <div class="form-group">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" th:field="*{quantity}" min="1">
+        </div>
 
-    <p>
-        <label>Name:</label>
-        <input type="text" name="name"
-               th:value="${grocery.name}">
-    </p>
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" th:field="*{category}">
+        </div>
 
-    <p>
-        <label>Quantity:</label>
-        <input type="number" name="quantity"
-               th:value="${grocery.quantity}">
-    </p>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" th:field="*{purchased}"> Purchased
+            </label>
+        </div>
 
-    <p>
-        <label>Category:</label>
-        <input type="text" name="category"
-               th:value="${grocery.category}">
-    </p>
-
-    <p>
-        <label>Purchased:</label>
-
-        <input type="checkbox"
-               th:field="*{purchased}">
-    </p>
-
-    <button type="submit">Update</button>
-
-</form>
-
+        <button type="submit" class="btn">Update Item</button>
+        <a th:href="@{/groceries}" class="btn" style="background-color: #95a5a6; margin-left: 10px;">Cancel</a>
+    </form>
+</div>
 </body>
 </html>

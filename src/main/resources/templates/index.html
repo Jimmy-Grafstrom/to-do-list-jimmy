@@ -3,45 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Personal To-Do Manager</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h1>Personal To-Do Manager</h1>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<div class="container">
+    <h1>Personal To-Do Manager</h1>
 
-<p>
-    Welcome! This application helps you manage your personal tasks
-    across different categories.
-</p>
+    <p>
+        Welcome! This application helps you manage your personal tasks
+        across different categories.
+    </p>
 
-<h2>Task Categories:</h2>
+    <h2>Task Categories:</h2>
 
-<ul>
-    <li>
-        <a th:href="@{/workout}">
-            Workout Sessions
-        </a>
-        – Track your exercise activities.
-    </li>
+    <ul>
+        <li>
+            <a th:href="@{/workout}">
+                Workout Sessions
+            </a>
+            – Track your exercise activities.
+        </li>
 
-    <li>
-        <a th:href="@{/groceries}">
-            Grocery List
-        </a>
-        – Manage your shopping tasks.
-    </li>
+        <li>
+            <a th:href="@{/groceries}">
+                Grocery List
+            </a>
+            – Manage your shopping tasks.
+        </li>
 
-    <li>
-           <a th:href="@{/studyplan}">Studyplan
-           </a>
-        – Plan and organize your study tasks.
-    </li>
+        <li>
+               <a th:href="@{/studyplan}">Studyplan
+               </a>
+            – Plan and organize your study tasks.
+        </li>
 
-    <li>
-        <a th:href="@{/homeChore}">
-            Home chores
-        </a>
-        - Organize your home chores.
-    </li>
-</ul>
-
+        <li>
+            <a th:href="@{/homeChore}">
+                Home chores
+            </a>
+            - Organize your home chores.
+        </li>
+    </ul>
+</div>
 </body>
 </html>
